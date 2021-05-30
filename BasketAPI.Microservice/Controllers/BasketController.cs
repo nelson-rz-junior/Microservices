@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BasketAPI.Microservice.Controllers
 {
-    [Route("api/v1/[controller]")]  
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BasketController : ControllerBase
     {
