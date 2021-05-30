@@ -1,0 +1,29 @@
+﻿# $ docker-compose up -d
+
+version: "3.7"
+
+volumes:
+    mongo-data:
+
+services: 
+    product.db:
+        container_name: product-db
+        image: mongo
+        ports:
+            - 27017:27107
+        volumes:
+            - mongo-data:/data/db 
+        restart: always
+
+    product.api:
+        container_name: product-api
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "DatabaseSettings:ConnectionString=mongodb://product.db:27017"
+        depends_on:
+            - product.db
+        ports: 
+            - 2000:80
