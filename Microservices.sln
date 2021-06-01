@@ -4,8 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketAPI.Microservice", "BasketAPI.Microservice\BasketAPI.Microservice.csproj", "{19BC7EE2-31BE-42B0-9C70-AFC6509E20ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E} = {9BD6760E-78A4-4915-B4E2-2C6242A9785E}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI.Microservice", "ProductAPI.Microservice\ProductAPI.Microservice.csproj", "{92B46C2D-4893-4C47-B0A9-DF39579E0776}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E} = {9BD6760E-78A4-4915-B4E2-2C6242A9785E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Microservice", "DataAccess.Microservice\DataAccess.Microservice.csproj", "{9BD6760E-78A4-4915-B4E2-2C6242A9785E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketAPI.Grpc", "BasketAPI.Grpc\BasketAPI.Grpc.csproj", "{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketAPI.Grpc.Client", "BasketAPI.Grpc.Client\BasketAPI.Grpc.Client.csproj", "{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +33,18 @@ Global
 		{92B46C2D-4893-4C47-B0A9-DF39579E0776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B46C2D-4893-4C47-B0A9-DF39579E0776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92B46C2D-4893-4C47-B0A9-DF39579E0776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD6760E-78A4-4915-B4E2-2C6242A9785E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

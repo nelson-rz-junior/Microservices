@@ -1,8 +1,8 @@
-﻿using ProductAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.ProductAPI.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProductAPI.Microservice.Repositories
+namespace DataAccess.Microservice.ProductAPI.Repositories
 {
     public interface IProductRepository
     {

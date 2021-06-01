@@ -1,5 +1,5 @@
-using ProductAPI.Microservice.Data;
-using ProductAPI.Microservice.Repositories;
+using DataAccess.Microservice.ProductAPI.Context;
+using DataAccess.Microservice.ProductAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

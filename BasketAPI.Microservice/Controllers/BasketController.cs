@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DataAccess.Microservice.BasketAPI.Entities;
+using DataAccess.Microservice.BasketAPI.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BasketAPI.Microservice.Entities;
-using BasketAPI.Microservice.Repositories;
 using System;
 using System.Threading.Tasks;
 

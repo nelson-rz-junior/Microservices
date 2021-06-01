@@ -1,4 +1,4 @@
-﻿namespace BasketAPI.Microservice.Entities
+﻿namespace DataAccess.Microservice.BasketAPI.Entities
 {
     public class ShoppingCartItem
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ProductAPI.Microservice.Repositories;
+using DataAccess.Microservice.ProductAPI.Entities;
+using DataAccess.Microservice.ProductAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProductAPI.Microservice.Entities;
 
 namespace ProductAPI.Microservice.Controllers
 {

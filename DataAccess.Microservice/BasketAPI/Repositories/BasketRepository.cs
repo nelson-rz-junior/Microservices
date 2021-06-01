@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
-using BasketAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.BasketAPI.Entities;
+using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace BasketAPI.Microservice.Repositories
+namespace DataAccess.Microservice.BasketAPI.Repositories
 {
     public class BasketRepository : IBasketRepository
     {

@@ -1,7 +1,7 @@
-﻿using BasketAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.BasketAPI.Entities;
 using System.Threading.Tasks;
 
-namespace BasketAPI.Microservice.Repositories
+namespace DataAccess.Microservice.BasketAPI.Repositories
 {
     public interface IBasketRepository
     {

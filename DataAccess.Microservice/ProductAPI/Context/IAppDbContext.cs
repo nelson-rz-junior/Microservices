@@ -1,7 +1,7 @@
-﻿using ProductAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.ProductAPI.Entities;
 using MongoDB.Driver;
 
-namespace ProductAPI.Microservice.Data
+namespace DataAccess.Microservice.ProductAPI.Context
 {
     public interface IAppDbContext
     {

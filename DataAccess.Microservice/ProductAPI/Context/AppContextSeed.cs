@@ -1,8 +1,8 @@
-﻿using ProductAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.ProductAPI.Entities;
 using MongoDB.Driver;
 using System.Collections.Generic;
 
-namespace ProductAPI.Microservice.Data
+namespace DataAccess.Microservice.ProductAPI.Context
 {
     public class AppContextSeed
     {

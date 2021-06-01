@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "BasketAPI.Grpc.Client";
+
+package BasketApi;
+
+service Basket {
+  rpc GetBasket (BasketGetRequest) returns (BasketResponse);
+  rpc UpdateBasket (BasketUpdateRequest) returns (BasketResponse);
+  rpc DeleteBasket (BasketDeleteRequest) returns (Empty);
+}
+
+message BasketGetRequest {
+  string userName = 1;
+}
+
+message BasketUpdateRequest {
+  string userName = 1;
+  repeated BasketItemResponse items = 2;
+}
+
+message BasketDeleteRequest {
+  string userName = 1;
+}
+
+message BasketItemResponse {
+  string ProductId = 1;
+  string ProductName = 2;
+  int32 Quantity = 3;
+  double Price = 4;
+}
+
+message BasketResponse {
+  string userName = 1;
+  repeated BasketItemResponse items = 2;
+}
+
+message Empty {
+}

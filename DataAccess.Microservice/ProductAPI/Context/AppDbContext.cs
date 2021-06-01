@@ -1,8 +1,8 @@
-﻿using ProductAPI.Microservice.Entities;
+﻿using DataAccess.Microservice.ProductAPI.Entities;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
-namespace ProductAPI.Microservice.Data
+namespace DataAccess.Microservice.ProductAPI.Context
 {
     public class AppDbContext : IAppDbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BasketAPI.Microservice.Entities
+namespace DataAccess.Microservice.BasketAPI.Entities
 {
     public class ShoppingCart
     {
