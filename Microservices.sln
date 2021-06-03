@@ -13,11 +13,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI.Microservice", "
 		{9BD6760E-78A4-4915-B4E2-2C6242A9785E} = {9BD6760E-78A4-4915-B4E2-2C6242A9785E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Microservice", "DataAccess.Microservice\DataAccess.Microservice.csproj", "{9BD6760E-78A4-4915-B4E2-2C6242A9785E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Microservice", "DataAccess.Microservice\DataAccess.Microservice.csproj", "{9BD6760E-78A4-4915-B4E2-2C6242A9785E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketAPI.Grpc", "BasketAPI.Grpc\BasketAPI.Grpc.csproj", "{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketAPI.Grpc", "BasketAPI.Grpc\BasketAPI.Grpc.csproj", "{DCA2C5F2-2C3D-4873-8F9F-4155060B276C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketAPI.Grpc.Client", "BasketAPI.Grpc.Client\BasketAPI.Grpc.Client.csproj", "{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketAPI.Grpc.Client", "BasketAPI.Grpc.Client\BasketAPI.Grpc.Client.csproj", "{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2DB3D00-F04B-49C1-974B-6DB32F6B923F}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Dockerfile.Basket.gRPC = Dockerfile.Basket.gRPC
+		Dockerfile.BasketAPI = Dockerfile.BasketAPI
+		Dockerfile.ProductAPI = Dockerfile.ProductAPI
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -18,8 +18,8 @@ services:
     product.api:
         container_name: product-api
         build:
-            context: .
-            dockerfile: Dockerfile
+            context: ../
+            dockerfile: Dockerfile.ProductAPI
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "DatabaseSettings:ConnectionString=mongodb://product.db:27017"

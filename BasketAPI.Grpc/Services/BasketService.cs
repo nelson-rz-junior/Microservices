@@ -4,6 +4,7 @@ using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,10 +35,9 @@ namespace BasketAPI.Grpc
             }
             else
             {
-                context.Status = new Status(StatusCode.NotFound, $"Basket for {request.UserName} do not exist");
+                context.Status = new Status(StatusCode.OK, $"Basket created for {request.UserName}");
+                return MapToBasketResponse(new ShoppingCart { UserName = request.UserName, Items = new List<ShoppingCartItem>() });
             }
-
-            return new BasketResponse();
         }
 
         public override async Task<BasketResponse> UpdateBasket(BasketUpdateRequest request, ServerCallContext context)
