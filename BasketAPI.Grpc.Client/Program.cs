@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace BasketAPI.Grpc.Client
 {
@@ -29,17 +30,9 @@ namespace BasketAPI.Grpc.Client
                 UserName = Guid.NewGuid().ToString()
             });
 
-            foreach (var item in reply.Items)
-            {
-                Console.WriteLine($"ProductId: {item.ProductId}");
-                Console.WriteLine($"Product Name: {item.ProductName}");
-                Console.WriteLine($"Quantity: {item.Quantity}");
-                Console.WriteLine($"Price: {item.Price:c}");
-            }
+            WriteLine($"Basket created for {reply.UserName}");
 
-            Console.WriteLine($"Basket created for {reply.UserName}");
-
-            Console.WriteLine();
+            WriteLine();
 
             var basketUpdate = new BasketUpdateRequest
             {
@@ -57,23 +50,31 @@ namespace BasketAPI.Grpc.Client
 
             var response = await client.UpdateBasketAsync(basketUpdate);
 
-            Console.WriteLine($"Basket updated for {reply.UserName}");
+            WriteLine($"Basket updated for {reply.UserName}");
 
-            Console.WriteLine();
+            WriteLine();
+
+            WriteLine("{0, -8} {1, 30} {2, 30} {3, 25}", "Product Id", "Product Name", "Quantity", "Price");
 
             foreach (var item in response.Items)
             {
-                Console.WriteLine($"ProductId: {item.ProductId}");
-                Console.WriteLine($"Product Name: {item.ProductName}");
-                Console.WriteLine($"Quantity: {item.Quantity}");
-                Console.WriteLine($"Price: {item.Price:c}");
-
-                Console.WriteLine("------------------------------------");
+                WriteLine("{0, -8} {1, 30} {2, 32} {3, 28:C}", item.ProductId, item.ProductName, item.Quantity, item.Price);
             }
 
-            Console.WriteLine("Press any key to exit...");
+            WriteLine();
 
-            Console.ReadKey();
+            await client.DeleteBasketAsync(new BasketDeleteRequest
+            {
+                UserName = reply.UserName
+            });
+
+            WriteLine($"Basket deleted for {reply.UserName}");
+
+            WriteLine();
+
+            WriteLine("Press any key to exit...");
+
+            ReadKey();
         }
     }
 }

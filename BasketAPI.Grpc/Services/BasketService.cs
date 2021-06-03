@@ -36,7 +36,11 @@ namespace BasketAPI.Grpc
             else
             {
                 context.Status = new Status(StatusCode.OK, $"Basket created for {request.UserName}");
-                return MapToBasketResponse(new ShoppingCart { UserName = request.UserName, Items = new List<ShoppingCartItem>() });
+                return MapToBasketResponse(new ShoppingCart
+                {
+                    UserName = request.UserName,
+                    Items = new List<ShoppingCartItem>()
+                });
             }
         }
 
@@ -55,7 +59,7 @@ namespace BasketAPI.Grpc
 
             context.Status = new Status(StatusCode.NotFound, $"Basket for {request.UserName} do not exist");
 
-            return null;
+            return new BasketResponse();
         }
 
         public override async Task<Empty> DeleteBasket(BasketDeleteRequest request, ServerCallContext context)
@@ -66,7 +70,7 @@ namespace BasketAPI.Grpc
 
             context.Status = new Status(StatusCode.OK, $"Basket for {request.UserName} deleted succesfully");
 
-            return null;
+            return new Empty();
         }
 
         private BasketResponse MapToBasketResponse(ShoppingCart basket)
