@@ -28,10 +28,16 @@ namespace ProductAPI.Microservice.Controllers
         }
 
         [HttpGet("{id:length(24)}", Name = "GetProductById")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
         public async Task<ActionResult<Product>> GetProductById(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest("Invalid product id");
+            }
+
             var product = await _productRepository.GetProduct(id);
             if (product is null)
             {
@@ -46,7 +52,7 @@ namespace ProductAPI.Microservice.Controllers
         [ProducesResponseType(typeof(IEnumerable<Product>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
         {
-            if (category is null)
+            if (string.IsNullOrWhiteSpace(category))
             {
                 return BadRequest("Invalid category");
             }
@@ -93,10 +99,16 @@ namespace ProductAPI.Microservice.Controllers
 
 
         [HttpDelete("{id:length(24)}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteProductById(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest("Invalid product id");
+            }
+
             bool result = await _productRepository.DeleteProduct(id);
             if (!result)
             {
