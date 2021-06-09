@@ -1,0 +1,46 @@
+# $ docker-compose up -d
+
+version: "3.7"
+
+volumes:
+    postgres-data:
+    pgadmin-data:
+
+services: 
+    coupon.db:
+        container_name: coupon-db
+        image: postgres
+        environment:
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=admin1234
+            - POSTGRES_DB=CouponDB
+        ports:
+            - 5432:5432
+        volumes:
+            - postgres-data:/var/lib/postgresql/data/
+        restart: always
+
+    pgadmin.db:
+        container_name: pgadmin-db
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@email.com
+            - PGADMIN_DEFAULT_PASSWORD=admin1234
+        ports:
+            - 5050:80
+        volumes:
+            - pgadmin-data:/root/.pgadmin
+        restart: always
+
+    coupon.api:
+        container_name: coupon-api
+        build:
+            context: ../
+            dockerfile: Dockerfile.CouponAPI
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "DatabaseSettings:ConnectionString=Server=coupon.db;Port=5432;Database=CouponDB;User Id=admin;Password=admin1234;"
+        depends_on:
+            - coupon.db
+        ports: 
+            - 4000:80
