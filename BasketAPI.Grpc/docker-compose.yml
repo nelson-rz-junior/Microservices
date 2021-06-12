@@ -14,7 +14,7 @@ services:
         container_name: basket-grpc-api
         build:
             context: ../
-            dockerfile: Dockerfile.Basket.gRPC
+            dockerfile: BasketAPI.Grpc/Dockerfile
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_HTTPS_PORT=5001

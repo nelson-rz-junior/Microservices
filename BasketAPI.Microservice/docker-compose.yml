@@ -14,11 +14,11 @@ services:
         container_name: basket-api
         build:
             context: ../
-            dockerfile: Dockerfile.BasketAPI
+            dockerfile: BasketAPI.Microservice/Dockerfile
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "CacheSettings:ConnectionString=basket.db:6379"
         depends_on:
             - basket.db
         ports: 
-            - 3000:80
+            - 2000:80

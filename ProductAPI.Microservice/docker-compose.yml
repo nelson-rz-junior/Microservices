@@ -19,11 +19,11 @@ services:
         container_name: product-api
         build:
             context: ../
-            dockerfile: Dockerfile.ProductAPI
+            dockerfile: ProductAPI.Microservice/Dockerfile
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "DatabaseSettings:ConnectionString=mongodb://product.db:27017"
         depends_on:
             - product.db
         ports: 
-            - 2000:80
+            - 1000:80
