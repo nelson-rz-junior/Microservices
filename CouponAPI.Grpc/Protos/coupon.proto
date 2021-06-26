@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "CouponAPI.Grpc";
+
+package CouponAPI;
+
+service Coupon {
+	rpc GetCoupon (CouponGetRequest) returns (CouponModel);
+	rpc CreateCoupon (CouponCreateRequest) returns (CouponModel);
+	rpc UpdateCoupon (CouponUpdateRequest) returns (Empty);
+	rpc DeleteCoupon (CouponDeleteRequest) returns (Empty);
+}
+
+message CouponGetRequest {
+	string productName = 1;
+}
+
+message CouponCreateRequest {
+	CouponModel coupon = 1;
+}
+
+message CouponUpdateRequest {
+	CouponModel coupon = 1;
+}
+
+message CouponDeleteRequest {
+	string productName = 1;
+}
+
+message CouponModel {
+	int32 id = 1;
+	string productName = 2;
+	string description = 3;
+	double amount = 4;
+}
+
+message Empty {
+}

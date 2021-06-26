@@ -36,16 +36,16 @@ namespace BasketAPI.Grpc.Client
 
             var basketUpdate = new BasketUpdateRequest
             {
-                UserName = reply.UserName
+                Basket = new BasketModel { UserName = reply.UserName }
             };
 
-            basketUpdate.Items.AddRange(new List<BasketItemResponse>
+            basketUpdate.Basket.Items.AddRange(new List<BasketItemModel>
             {
-                new BasketItemResponse { ProductId = "123", ProductName = "Product 01", Quantity = 2, Price = 10 },
-                new BasketItemResponse { ProductId = "124", ProductName = "Product 02", Quantity = 3, Price = 20 },
-                new BasketItemResponse { ProductId = "125", ProductName = "Product 03", Quantity = 4, Price = 30 },
-                new BasketItemResponse { ProductId = "126", ProductName = "Product 04", Quantity = 1, Price = 40 },
-                new BasketItemResponse { ProductId = "127", ProductName = "Product 05", Quantity = 2, Price = 50 }
+                new BasketItemModel { ProductId = "123", ProductName = "Product 01", Quantity = 2, Price = 10 },
+                new BasketItemModel { ProductId = "124", ProductName = "Product 02", Quantity = 3, Price = 20 },
+                new BasketItemModel { ProductId = "125", ProductName = "Product 03", Quantity = 4, Price = 30 },
+                new BasketItemModel { ProductId = "126", ProductName = "Product 04", Quantity = 1, Price = 40 },
+                new BasketItemModel { ProductId = "127", ProductName = "Product 05", Quantity = 2, Price = 50 }
             });
 
             var response = await client.UpdateBasketAsync(basketUpdate);

@@ -23,7 +23,7 @@ namespace BasketAPI.Grpc
             _repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public override async Task<BasketResponse> GetBasket(BasketGetRequest request, ServerCallContext context)
+        public override async Task<BasketModel> GetBasket(BasketGetRequest request, ServerCallContext context)
         {
             _logger.LogInformation("Begin gRPC call from method {Method} for {UserName}", context.Method, request.UserName);
 
@@ -44,22 +44,22 @@ namespace BasketAPI.Grpc
             }
         }
 
-        public override async Task<BasketResponse> UpdateBasket(BasketUpdateRequest request, ServerCallContext context)
+        public override async Task<BasketModel> UpdateBasket(BasketUpdateRequest request, ServerCallContext context)
         {
-            _logger.LogInformation("Begin gRPC call from method {Method} for {UserName}", context.Method, request.UserName);
+            _logger.LogInformation("Begin gRPC call from method {Method} for {UserName}", context.Method, request.Basket.UserName);
 
             var basket = MapToShoppingCart(request);
 
             var response = await _repository.UpdateBasket(basket);
             if (response != null)
             {
-                context.Status = new Status(StatusCode.OK, $"Basket for {request.UserName} updated successfully");
+                context.Status = new Status(StatusCode.OK, $"Basket for {request.Basket.UserName} updated successfully");
                 return MapToBasketResponse(response);
             }
 
-            context.Status = new Status(StatusCode.NotFound, $"Basket for {request.UserName} do not exist");
+            context.Status = new Status(StatusCode.NotFound, $"Basket for {request.Basket.UserName} do not exist");
 
-            return new BasketResponse();
+            return new BasketModel();
         }
 
         public override async Task<Empty> DeleteBasket(BasketDeleteRequest request, ServerCallContext context)
@@ -73,14 +73,14 @@ namespace BasketAPI.Grpc
             return new Empty();
         }
 
-        private BasketResponse MapToBasketResponse(ShoppingCart basket)
+        private BasketModel MapToBasketResponse(ShoppingCart basket)
         {
-            var response = new BasketResponse
+            var response = new BasketModel
             {
                 UserName = basket.UserName
             };
 
-            basket.Items.ForEach(item => response.Items.Add(new BasketItemResponse
+            basket.Items.ForEach(item => response.Items.Add(new BasketItemModel
             {
                 ProductId = item.ProductId,
                 ProductName = item.ProductName,
@@ -95,10 +95,10 @@ namespace BasketAPI.Grpc
         {
             var response = new ShoppingCart
             {
-                UserName = request.UserName
+                UserName = request.Basket.UserName
             };
 
-            request.Items.ToList().ForEach(item => response.Items.Add(new ShoppingCartItem
+            request.Basket.Items.ToList().ForEach(item => response.Items.Add(new ShoppingCartItem
             {
                 ProductId = item.ProductId,
                 ProductName = item.ProductName,
