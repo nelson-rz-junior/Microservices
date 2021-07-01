@@ -8,7 +8,7 @@ service Coupon {
 	rpc GetCoupon (CouponGetRequest) returns (CouponModel);
 	rpc CreateCoupon (CouponCreateRequest) returns (CouponModel);
 	rpc UpdateCoupon (CouponUpdateRequest) returns (Empty);
-	rpc DeleteCoupon (CouponDeleteRequest) returns (Empty);
+	rpc DeleteCoupon (CouponDeleteRequest) returns (CouponDeleteResponse);
 }
 
 message CouponGetRequest {
@@ -25,6 +25,10 @@ message CouponUpdateRequest {
 
 message CouponDeleteRequest {
 	string productName = 1;
+}
+
+message CouponDeleteResponse {
+	bool success = 1;
 }
 
 message CouponModel {

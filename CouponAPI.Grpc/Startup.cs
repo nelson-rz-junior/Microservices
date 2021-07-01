@@ -1,4 +1,5 @@
-﻿using DataAccess.Microservice.CouponAPI.Repositories;
+﻿using CouponAPI.Grpc.Services;
+using DataAccess.Microservice.CouponAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,8 @@ namespace CouponAPI.Grpc
         {
             services.AddScoped<ICouponRepository, CouponRepository>();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddGrpc();
         }
 
@@ -26,11 +29,13 @@ namespace CouponAPI.Grpc
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<CouponService>();
 
                 endpoints.MapGet("/", async context =>
                 {
