@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
@@ -15,6 +16,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccess.Microservice\DataAccess.Microservice.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\CouponAPI.Grpc\Protos\coupon.proto" GrpcServices="Client">
+      <Link>Protos\coupon.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>

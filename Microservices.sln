@@ -19,19 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketAPI.Grpc", "BasketAPI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketAPI.Grpc.Client", "BasketAPI.Grpc.Client\BasketAPI.Grpc.Client.csproj", "{A9AEA197-EE75-45E5-9795-0E88AA75EEE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2DB3D00-F04B-49C1-974B-6DB32F6B923F}"
-	ProjectSection(SolutionItems) = preProject
-		.dockerignore = .dockerignore
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		Dockerfile.Basket.gRPC = Dockerfile.Basket.gRPC
-		Dockerfile.BasketAPI = Dockerfile.BasketAPI
-		Dockerfile.ProductAPI = Dockerfile.ProductAPI
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouponAPI.Microservice", "CouponAPI.Microservice\CouponAPI.Microservice.csproj", "{3D7CC8DF-D787-4AD4-9DE1-11C2CD4B4258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponAPI.Grpc", "CouponAPI.Grpc\CouponAPI.Grpc.csproj", "{93F07BCF-DCF7-435C-9692-A77D42686B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouponAPI.Grpc", "CouponAPI.Grpc\CouponAPI.Grpc.csproj", "{93F07BCF-DCF7-435C-9692-A77D42686B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
