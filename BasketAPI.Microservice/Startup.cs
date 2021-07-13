@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using DataAccess.Microservice.BasketAPI.Repositories;
+using BasketAPI.Microservice.Services;
+using CouponAPI.Grpc;
+using System;
 
 namespace BasketAPI.Microservice
 {
@@ -26,6 +29,13 @@ namespace BasketAPI.Microservice
             });
 
             services.AddScoped<IBasketRepository, BasketRepository>();
+
+            services.AddScoped<ICouponGrpc, CouponGrpc>();
+
+            services.AddGrpcClient<Coupon.CouponClient>(config =>
+            {
+                config.Address = new Uri(Configuration["GrpcSettings:CouponUrl"]);
+            });
 
             services.AddControllers();
 

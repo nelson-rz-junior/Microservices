@@ -1,4 +1,5 @@
-﻿using DataAccess.Microservice.BasketAPI.Entities;
+﻿using BasketAPI.Microservice.Services;
+using DataAccess.Microservice.BasketAPI.Entities;
 using DataAccess.Microservice.BasketAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,12 @@ namespace BasketAPI.Microservice.Controllers
     {
         private readonly IBasketRepository _repository;
 
-        public BasketController(IBasketRepository repository)
+        private readonly ICouponGrpc _coupon;
+
+        public BasketController(IBasketRepository repository, ICouponGrpc coupon)
         {
             _repository = repository ?? throw new ArgumentException(nameof(repository));
+            _coupon = coupon ?? throw new ArgumentException(nameof(coupon));
         }
 
         [HttpGet("{userName}")]
@@ -34,6 +38,12 @@ namespace BasketAPI.Microservice.Controllers
             if (basket is null)
             {
                 return BadRequest("Invalid basket");
+            }
+
+            foreach (var item in basket.Items)
+            {
+                var coupon = await _coupon.GetCoupon(item.ProductName);
+                item.Price -= (decimal)coupon.Amount;
             }
 
             return Ok(await _repository.UpdateBasket(basket));
