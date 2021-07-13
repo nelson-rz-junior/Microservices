@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 option csharp_namespace = "BasketAPI.Grpc";
 
 package BasketApi;
@@ -7,7 +9,7 @@ package BasketApi;
 service Basket {
   rpc GetBasket (BasketGetRequest) returns (BasketModel);
   rpc UpdateBasket (BasketUpdateRequest) returns (BasketModel);
-  rpc DeleteBasket (BasketDeleteRequest) returns (Empty);
+  rpc DeleteBasket (BasketDeleteRequest) returns (google.protobuf.Empty);
 }
 
 message BasketGetRequest {
@@ -32,7 +34,4 @@ message BasketItemModel {
   string ProductName = 2;
   int32 Quantity = 3;
   double Price = 4;
-}
-
-message Empty {
 }

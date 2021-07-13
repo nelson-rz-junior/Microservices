@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 option csharp_namespace = "CouponAPI.Grpc";
 
 package CouponAPI;
@@ -7,7 +9,7 @@ package CouponAPI;
 service Coupon {
 	rpc GetCoupon (CouponGetRequest) returns (CouponModel);
 	rpc CreateCoupon (CouponCreateRequest) returns (CouponModel);
-	rpc UpdateCoupon (CouponUpdateRequest) returns (Empty);
+	rpc UpdateCoupon (CouponUpdateRequest) returns (google.protobuf.Empty);
 	rpc DeleteCoupon (CouponDeleteRequest) returns (CouponDeleteResponse);
 }
 
@@ -36,7 +38,4 @@ message CouponModel {
 	string productName = 2;
 	string description = 3;
 	double amount = 4;
-}
-
-message Empty {
 }
