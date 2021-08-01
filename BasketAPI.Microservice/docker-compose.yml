@@ -1,6 +1,7 @@
-# Builds, (re)creates, starts, and attaches to containers for a service (detached mode): $ docker-compose up -d 
+# Builds, (re)creates, starts, and attaches to containers for a service (detached mode): $ docker-compose up -d
+# Build images before starting containers: $ docker-compose up -d --build
 # Stops containers and removes containers, networks, volumes, and images created by up: $ docker-compose down
-# Remove all images: docker image rm $(docker images -q)
+# Remove all images: $ docker image rm $(docker images -q)
 
 version: "3.7"
 
