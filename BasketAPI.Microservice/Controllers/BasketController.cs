@@ -42,7 +42,7 @@ namespace BasketAPI.Microservice.Controllers
 
             foreach (var item in basket.Items)
             {
-                var coupon = await _coupon.GetCoupon(item.ProductId);
+                var coupon = await _coupon.GetCoupon(item.ProductName);
                 item.Price -= (decimal)coupon.Amount;
             }
 

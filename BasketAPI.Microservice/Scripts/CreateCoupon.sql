@@ -1,14 +1,15 @@
-/* pgAdmin (Name: Local, Host: coupon.grpc.db, Password: admin1234) */
+/* pgAdmin (Add New Server -> Name: Local -> Host name/address: coupon.grpc.db -> Password: admin1234) 
+            Servers -> Local -> Databases -> CouponDB -> Schemas -> public -> Tables -> *Right button click* -> Query Tool) */
 CREATE TABLE Coupon(Id SERIAL PRIMARY KEY,
 	ProductName VARCHAR(24) NOT NULL,
 	Description TEXT,
 	Amount DECIMAL);
 	
-INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('PRODUCT01', 'COUPON FOR PRODUCT01', 5.50);
-INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('PRODUCT02', 'COUPON FOR PRODUCT02', 6.50);
-INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('PRODUCT03', 'COUPON FOR PRODUCT03', 7.50);
-INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('PRODUCT04', 'COUPON FOR PRODUCT04', 8.50);
-INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('PRODUCT05', 'COUPON FOR PRODUCT05', 9.50);
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Product 01', 'COUPON FOR PRODUCT01', 5.50);
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Product 02', 'COUPON FOR PRODUCT02', 6.50);
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Product 03', 'COUPON FOR PRODUCT03', 7.50);
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Product 04', 'COUPON FOR PRODUCT04', 8.50);
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Product 05', 'COUPON FOR PRODUCT05', 9.50);
 
 /*
     POST http://dockerhost:2000/swagger
