@@ -8,6 +8,8 @@ using DataAccess.Microservice.BasketAPI.Repositories;
 using BasketAPI.Microservice.Services;
 using CouponAPI.Grpc;
 using System;
+using System.Net.Http;
+using Grpc.Core;
 
 namespace BasketAPI.Microservice
 {
@@ -32,9 +34,18 @@ namespace BasketAPI.Microservice
 
             services.AddScoped<ICouponGrpc, CouponGrpc>();
 
+            // https://docs.microsoft.com/en-us/aspnet/core/grpc/clientfactory?view=aspnetcore-5.0
             services.AddGrpcClient<Coupon.CouponClient>(config =>
             {
                 config.Address = new Uri(Configuration["GrpcSettings:CouponUrl"]);
+            })
+            .ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                return new HttpClientHandler
+                {
+                    // Return true to allow certificates that are untrusted/invalid
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
             });
 
             services.AddControllers();

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccess.Microservice.CouponAPI.Repositories;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System;

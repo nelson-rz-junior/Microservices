@@ -1,5 +1,6 @@
 using DataAccess.Microservice.BasketAPI.Entities;
 using DataAccess.Microservice.BasketAPI.Repositories;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;

@@ -2,6 +2,10 @@
 
 version: "3.7"
 
+volumes:
+    postgres-data:
+    pgadmin-data:
+
 services: 
     basket.db:
         container_name: basket-db
@@ -18,7 +22,52 @@ services:
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "CacheSettings:ConnectionString=basket.db:6379"
+            - "GrpcSettings:CouponUrl=https://coupon.grpc.api:5001"
         depends_on:
             - basket.db
         ports: 
             - 2000:80
+
+    coupon.grpc.db:
+        container_name: coupon-grpc-db
+        image: postgres
+        environment:
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=admin1234
+            - POSTGRES_DB=CouponDB
+        ports:
+            - 5432:5432
+        volumes:
+            - postgres-data:/var/lib/postgresql/data/
+        restart: always
+
+    pgadmin.grpc.db:
+        container_name: pgadmin-grpc-db
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=admin@email.com
+            - PGADMIN_DEFAULT_PASSWORD=admin1234
+        ports:
+            - 5050:80
+        volumes:
+            - pgadmin-data:/root/.pgadmin
+        restart: always
+
+    coupon.grpc.api:
+        container_name: coupon-grpc-api
+        build:
+            context: ../
+            dockerfile: CouponAPI.Grpc/Dockerfile
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_HTTPS_PORT=5001
+            - ASPNETCORE_URLS=https://+:5001
+            - ASPNETCORE_Kestrel__Certificates__Default__Password=localhost
+            - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+            - "DatabaseSettings:ConnectionString=Server=coupon.grpc.db;Port=5432;Database=CouponDB;User Id=admin;Password=admin1234;"
+        depends_on:
+            - coupon.grpc.db
+        ports: 
+            - 5001:5001
+        volumes:
+            - ~/.aspnet/https:/https:ro
